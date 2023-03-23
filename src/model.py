@@ -40,7 +40,7 @@ def train(model, train_ds, val_ds):
       patience=5
   )  
   mc=tf.keras.callbacks.ModelCheckpoint(
-      filepath = 'model/cnn_ae/cp.ckpt', 
+      filepath = TRAIN_CONFIG['MODEL_PATH'], 
       monitor='val_loss', 
       mode='min', 
       save_best_only=True,

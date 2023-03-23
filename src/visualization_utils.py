@@ -23,9 +23,8 @@ def visualize_difference(ds, sample_size, autoencoder):
     encoded = autoencoder.encoder(img.numpy())
     decoded = autoencoder.decoder(encoded)
     samples = [i for i in range(img.shape[0])]
-    sample_size = 5
     samples = random.choices(samples, k=sample_size)
-    fig, axs = plt.subplots(ncols=2,nrows=5, figsize=(12,10))
+    fig, axs = plt.subplots(ncols=2,nrows=sample_size, figsize=(12,10))
     for i in range(sample_size):
         sample_idx = samples[i]
         axs[i,0].imshow(img[sample_idx].numpy().astype('uint8'))
