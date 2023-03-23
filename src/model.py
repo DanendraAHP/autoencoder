@@ -37,7 +37,7 @@ def train(model, train_ds, val_ds):
   es = tf.keras.callbacks.EarlyStopping(
       monitor='val_loss', mode='min', 
       verbose=1,
-      patience=5
+      patience=TRAIN_CONFIG['ES_PATIENCE']
   )  
   mc=tf.keras.callbacks.ModelCheckpoint(
       filepath = TRAIN_CONFIG['MODEL_PATH'], 
@@ -48,7 +48,7 @@ def train(model, train_ds, val_ds):
       save_weights_only=True
   )  
   history = model.fit(train_ds,
-      epochs=100,
+      epochs=TRAIN_CONFIG['EPOCHS'],
       shuffle=True,
       validation_data=val_ds,
       callbacks=[es, mc]
